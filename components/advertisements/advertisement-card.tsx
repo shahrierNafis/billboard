@@ -15,14 +15,15 @@ export type Advertisement = {
 
 export function AdvertisementCard({ ad }: { ad: Advertisement }) {
   return (
-    <Card className="w-full max-w-xl overflow-hidden rounded-[1.5rem] min-h-[360px] font-mono">
+    <Card className="w-full max-w-xl overflow-hidden rounded-[1.5rem] min-h-[320px] sm:min-h-[360px] font-mono">
       <a
         href={ad.href}
         target={ad.href.startsWith("mailto:") ? undefined : "_blank"}
         rel={ad.href.startsWith("mailto:") ? undefined : "noreferrer"}
+        className="block"
       >
         {ad.image ? (
-          <div className="relative h-64 w-full overflow-hidden">
+          <div className="relative h-56 w-full overflow-hidden sm:h-64">
             <Image
               className="h-full w-full object-cover"
               src={ad.image}
@@ -33,17 +34,17 @@ export function AdvertisementCard({ ad }: { ad: Advertisement }) {
             />
           </div>
         ) : null}
-        <CardHeader className="items-start gap-4 pt-6 px-6">
+        <CardHeader className="flex flex-col gap-4 pt-6 px-6 sm:flex-row sm:items-start sm:justify-between">
           <div className="space-y-2">
             <CardTitle>{ad.title}</CardTitle>
             <CardDescription>{ad.subtitle}</CardDescription>
           </div>
         </CardHeader>
         <CardContent className="px-6 pb-6 pt-2">
-          <p className="text-base leading-7 text-slate-700 dark:text-slate-300">{ad.description}</p>
+          <p className="text-sm leading-7 text-slate-700 dark:text-slate-300 sm:text-base">{ad.description}</p>
         </CardContent>
-        <CardFooter className="justify-between px-6 py-4">
-          <span className="text-sm text-muted-foreground">
+        <CardFooter className="flex flex-col gap-2 px-6 py-4 sm:flex-row sm:justify-between">
+          <span className="text-sm text-muted-foreground break-words">
             {ad.id === "contact" ? "Email: ad-ops@example.com" : "Featured partner"}
           </span>
           <span className="text-xs uppercase tracking-[0.24em] text-muted-foreground">Advertisement</span>

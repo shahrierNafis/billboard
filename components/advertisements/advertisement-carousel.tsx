@@ -40,7 +40,7 @@ export function AdvertisementCarousel() {
   React.useEffect(() => {
     if (!api) return;
 
-    if (timer === 0) api.scrollNext();
+    if (timer === 1) api.scrollNext();
 
     return () => {};
   }, [api, timer]);
@@ -56,12 +56,12 @@ export function AdvertisementCarousel() {
     <Carousel
       opts={{ loop: true, align: "center", slidesToScroll: 1, containScroll: "trimSnaps" }}
       setApi={setApi}
-      className="relative"
+      className="relative select-none "
     >
-      <CarouselContent className="">
+      <CarouselContent className="overflow-visible">
         {advertisements.map((ad) => (
-          <CarouselItem key={ad.id} className="py-4">
-            <div className="flex justify-center items-center">
+          <CarouselItem key={ad.id} className="min-w-full py-4">
+            <div className="flex justify-center px-2 sm:px-0">
               <AdvertisementCard ad={ad} />
             </div>
           </CarouselItem>
@@ -69,16 +69,18 @@ export function AdvertisementCarousel() {
       </CarouselContent>
 
       <CarouselPrevious
+        className="hidden sm:flex"
         aria-label="Previous advertisement"
         onClick={() => {
-          setTimer(5);
+          setTimer(time);
           api && api.scrollPrev();
         }}
       />
       <CarouselNext
+        className="hidden sm:flex"
         aria-label="Next advertisement"
         onClick={() => {
-          setTimer(5);
+          setTimer(time);
           api && api.scrollNext();
         }}
       />
