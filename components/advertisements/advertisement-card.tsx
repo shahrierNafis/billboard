@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -10,7 +10,7 @@ export type Advertisement = {
   subtitle: string;
   description: string;
   href: string;
-  image?: string;
+  image?: string | StaticImageData;
 };
 
 export function AdvertisementCard({ ad }: { ad: Advertisement }) {

@@ -11,6 +11,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { AdvertisementCard, type Advertisement } from "./advertisement-card";
+import italki from "../../public/Italki main page.png";
 
 const advertisements: Advertisement[] = [
   {
@@ -20,7 +21,7 @@ const advertisements: Advertisement[] = [
     description:
       "Explore italki to book live language lessons with expert tutors, practice conversation skills, and grow your fluency. Make your first purchase and get $10 off.",
     href: "https://www.italki.com/affshare?ref=af18343896",
-    image: "/Italki main page.png",
+    image: italki,
   },
   {
     id: "contact",

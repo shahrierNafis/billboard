@@ -1,13 +1,14 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === "production";
 
-const nextConfig: NextConfig = {
-  /* config options here */
+const nextConfig = {
   output: "export",
-  basePath: "/billboard",
-  assetPrefix: "/billboard/",
+  // Only use the repo name as a prefix in production
+  basePath: isProd ? "/billboard" : "",
+  assetPrefix: isProd ? "/billboard/" : "",
   images: {
     unoptimized: true,
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
